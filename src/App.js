@@ -35,22 +35,40 @@ class App extends Component {
     this.setState({ currentUser: newUser })
   }
 
-
-
   calculateAccountBalance = () => {
-    const totalCredits = this.state.creditList.reduce((acc, credit) => acc + credit.amount, 0);
-    const totalDebits = this.state.debitList.reduce((acc, debit) => acc + debit.amount, 0);
-    return (totalCredits - totalDebits).toFixed(2);
+    const totalCredits = this.state.creditList.reduce((acc, credit) => acc + parseFloat(credit.amount), 0);
+    const totalDebits = this.state.debitList.reduce((acc, debit) => acc + parseFloat(debit.amount), 0);
+    return totalCredits - totalDebits;  // Return as float
   }
 
   componentDidMount() {
     // Fetch credit and debit data from API and update state
+    fetch('https://johnnylaicode.github.io/api/credits.json')
+      .then(response => response.json())
+      .then(data => {
+        const creditsFromAPI = data.map(item => ({
+          ...item,
+          amount: parseFloat(item.amount).toFixed(2)
+        }));
+        this.setState({ creditList: creditsFromAPI }, () => {
+          const newAccountBalance = this.calculateAccountBalance();
+          this.setState({ accountBalance: parseFloat(newAccountBalance).toFixed(2) });
+        });
+      })
+      .catch(error => console.error('Error fetching credits:', error));
   }
 
   addCredit = (credit) => {
+    const newAmount = parseFloat(credit.amount);
+    const newCredit = { ...credit, amount: newAmount };
+
+    this.setState({ creditList: [...this.state.creditList, newCredit] }, () => {
+      const newAccountBalance = this.calculateAccountBalance();
+      this.setState({ accountBalance: newAccountBalance });
+    });
   }
 
-  addCredit = (debit) => {
+  addDebit = (debit) => {
   }
 
 
@@ -63,7 +81,13 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
     )
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const CreditsComponent = () => (<Credits credits={this.state.creditList} />)
+    const CreditsComponent = () => (
+      <Credits
+        credits={this.state.creditList}
+        addCredit={this.addCredit}
+        accountBalance={this.state.accountBalance}
+      />
+    )
     const DebitsComponent = () => (<Debits debits={this.state.debitList} />)
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
