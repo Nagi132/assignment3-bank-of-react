@@ -42,7 +42,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    // Fetch credit and debit data from API and update state
+    // Fetch credit data from API and update state
     fetch('https://johnnylaicode.github.io/api/credits.json')
       .then(response => response.json())
       .then(data => {
@@ -56,6 +56,21 @@ class App extends Component {
         });
       })
       .catch(error => console.error('Error fetching credits:', error));
+
+    // Fetch debit data from API and update state
+    fetch('https://johnnylaicode.github.io/api/debits.json')
+      .then(response => response.json())
+      .then(data => {
+        const debitsFromAPI = data.map(item => ({
+          ...item,
+          amount: parseFloat(item.amount)
+        }));
+        this.setState({ debitList: debitsFromAPI }, () => {
+          const newAccountBalance = this.calculateAccountBalance();
+          this.setState({ accountBalance: parseFloat(newAccountBalance).toFixed(2) });
+        });
+      })
+      .catch(error => console.error('Error fetching debits:', error));
   }
 
   addCredit = (credit) => {
@@ -69,9 +84,14 @@ class App extends Component {
   }
 
   addDebit = (debit) => {
+    const newAmount = parseFloat(debit.amount);
+    const newDebit = { ...debit, amount: newAmount };
+
+    this.setState({ debitList: [...this.state.debitList, newDebit] }, () => {
+      const newAccountBalance = this.calculateAccountBalance();
+      this.setState({ accountBalance: newAccountBalance });
+    });
   }
-
-
 
   render() {
     // Create React elements and pass input props to components
@@ -88,7 +108,13 @@ class App extends Component {
         accountBalance={this.state.accountBalance}
       />
     )
-    const DebitsComponent = () => (<Debits debits={this.state.debitList} />)
+    const DebitsComponent = () => (
+      <Debits
+        debits={this.state.debitList}
+        addDebit={this.addDebit}
+        accountBalance={this.state.accountBalance}
+      />
+    )
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
     return (

@@ -36,7 +36,7 @@ const Credits = ({ credits, addCredit, accountBalance }) => {
       <ul>
         {credits.map((credit, index) => (
           <li key={index}>
-            {credit.description} - ${parseFloat(credit.amount).toFixed(2)} - {credit.date}
+            {credit.description} - ${parseFloat(credit.amount).toFixed(2)} - {credit.date.slice(0, 10)}
           </li>
         ))}
       </ul>
