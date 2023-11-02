@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/my-react-app/static/css/main.8287159a.chunk.css",
-    "main.js": "/my-react-app/static/js/main.8988e82d.chunk.js",
-    "main.js.map": "/my-react-app/static/js/main.8988e82d.chunk.js.map",
-    "runtime-main.js": "/my-react-app/static/js/runtime-main.ea09ba20.js",
-    "runtime-main.js.map": "/my-react-app/static/js/runtime-main.ea09ba20.js.map",
-    "static/js/2.56edad9e.chunk.js": "/my-react-app/static/js/2.56edad9e.chunk.js",
-    "static/js/2.56edad9e.chunk.js.map": "/my-react-app/static/js/2.56edad9e.chunk.js.map",
-    "static/js/3.ad41300f.chunk.js": "/my-react-app/static/js/3.ad41300f.chunk.js",
-    "static/js/3.ad41300f.chunk.js.map": "/my-react-app/static/js/3.ad41300f.chunk.js.map",
-    "index.html": "/my-react-app/index.html",
-    "static/css/main.8287159a.chunk.css.map": "/my-react-app/static/css/main.8287159a.chunk.css.map",
-    "static/js/2.56edad9e.chunk.js.LICENSE.txt": "/my-react-app/static/js/2.56edad9e.chunk.js.LICENSE.txt"
+    "main.css": "/assignment3-bank-of-react/static/css/main.8287159a.chunk.css",
+    "main.js": "/assignment3-bank-of-react/static/js/main.8988e82d.chunk.js",
+    "main.js.map": "/assignment3-bank-of-react/static/js/main.8988e82d.chunk.js.map",
+    "runtime-main.js": "/assignment3-bank-of-react/static/js/runtime-main.f9037db9.js",
+    "runtime-main.js.map": "/assignment3-bank-of-react/static/js/runtime-main.f9037db9.js.map",
+    "static/js/2.56edad9e.chunk.js": "/assignment3-bank-of-react/static/js/2.56edad9e.chunk.js",
+    "static/js/2.56edad9e.chunk.js.map": "/assignment3-bank-of-react/static/js/2.56edad9e.chunk.js.map",
+    "static/js/3.ad41300f.chunk.js": "/assignment3-bank-of-react/static/js/3.ad41300f.chunk.js",
+    "static/js/3.ad41300f.chunk.js.map": "/assignment3-bank-of-react/static/js/3.ad41300f.chunk.js.map",
+    "index.html": "/assignment3-bank-of-react/index.html",
+    "static/css/main.8287159a.chunk.css.map": "/assignment3-bank-of-react/static/css/main.8287159a.chunk.css.map",
+    "static/js/2.56edad9e.chunk.js.LICENSE.txt": "/assignment3-bank-of-react/static/js/2.56edad9e.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ea09ba20.js",
+    "static/js/runtime-main.f9037db9.js",
     "static/js/2.56edad9e.chunk.js",
     "static/css/main.8287159a.chunk.css",
     "static/js/main.8988e82d.chunk.js"
